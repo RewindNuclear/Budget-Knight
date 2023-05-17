@@ -9,6 +9,10 @@ Users will be able to register/login to the app - input their income and report 
 
 This app utilizes MERN stack and MONGODB ATLAS
 
+## My Role
+My role in this project was working with the backend. I helped create and maintain the MONGO DB ATLAS, Created the API endpoints which include basic CRUD applications as well as email verification and password recovery,
+I also made the yaml on swaggerhub which tested these api endpoints
+
 ## Contributors
  Back-End: [Wyatt Nagel](https://github.com/nagelwy)
 <br> Back-End: [Christian Samson](https://github.com/rewindnuclear)
