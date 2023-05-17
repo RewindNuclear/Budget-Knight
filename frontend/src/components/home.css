@@ -1,0 +1,110 @@
+body {
+    background-color: azure;
+}
+
+:root{
+    --mainColor: #AEDD97;
+    --mainColorLight: #43d181;
+    --secondaryColor: #3a4c40;
+    --textColor: #ffffff;
+}
+
+p {
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+}
+
+.mission p {
+    margin: 100px;
+    font-size: 25px;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+.welcome {
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.idk {
+    padding: 5px;
+    display: flex;
+}
+
+.home-signup-btn {
+    padding: 5px;
+    cursor: pointer;
+    color: white !important;
+    background: var(--mainColor) !important;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+    justify-content: right;
+    background-color: black;
+}
+
+.services .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    margin: 1rem;
+    justify-content: center;
+}
+
+.grid-container div {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.home,
+.mission,
+.services,
+.contact,
+.rest {
+    min-height: 100vh;
+    width: 100%;
+    text-align: center;
+    margin-top: -80px;
+    padding-top: 80px;
+}
+
+.home {
+    background-color: azure;
+    height: 120vh;
+}
+
+.mission {
+    background-color: var(--mainColor);
+    color: azure;
+}
+
+.services {
+    background-color: azure;
+}
+
+.contact {
+    background-color: var(--mainColor);
+}
+
+@media screen and (max-width: 768px) {
+    p {
+        margin: 20px;
+        font-size: 20px;
+    }
+    
+    .mission p {
+        margin: 20px;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
