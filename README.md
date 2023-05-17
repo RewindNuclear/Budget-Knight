@@ -11,7 +11,7 @@ This app utilizes MERN stack and MONGODB ATLAS
 
 ## My Role
 My role in this project was working with the backend. I helped create and maintain the MONGO DB ATLAS, Created the API endpoints which include basic CRUD applications as well as email verification and password recovery,
-I also made the yaml on swaggerhub which tested these api endpoints
+I also made the yaml on swaggerhub which tested these api endpoints. This project helped introduce me to creating an application using the MERN stack 
 
 ## Contributors
  Back-End: [Wyatt Nagel](https://github.com/nagelwy)
