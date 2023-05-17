@@ -1,0 +1,387 @@
+swagger: '2.0'
+info:
+  description: This is the API documentation for the COP 4331 Budget Knight app
+  version: 1.0.0
+  title: Budget Knight 
+  # put the contact info for your development or API team
+  contact:
+    email: christiansamson58@gmail.com
+
+paths:
+  /register:
+    post:
+      tags:
+      - Users
+      summary: Registers a new user
+      operationId: register
+      description: Registers a user in Budget Knight 
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: registerItem
+        description: Register
+        schema:
+          $ref: '#/definitions/register'
+      responses:
+        200:
+          description: Successfully registered a user 
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+   
+  /login:
+    post:
+      tags:
+      - Users
+      summary: Logs in existing user
+      operationId: login
+      description: Logs in exisiting user to Budget Knight 
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: loginItem
+        description: login
+        schema:
+          $ref: '#/definitions/login'
+      responses:
+        200:
+          description: Logged in user
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+          
+  /addtransaction:
+    post:
+      tags:
+      - Transactions
+      summary: Adds a transaction
+      operationId: addtransaction
+      description: Adds a transaction in Budget Knight
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: transactionitem
+        description: transaction
+        schema:
+          $ref: '#/definitions/addtransaction'
+      responses:
+        200:
+          description: Transaction successfully added 
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error      
+          
+  /loadtransactions:
+    get:
+      tags:
+      - Transactions
+      summary: Loads a transaction for a user
+      operationId: loadtransaction
+      description: Retrieves a transaction for a user in Budget Knight
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: email
+        type: string
+        description: the email of the user whose transactions to retrieve
+      responses:
+        200:
+          description: Transactions sucessfully loaded
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error  
+          
+  /deleteTransaction/{id}:
+    delete:
+      tags:
+        - Transactions
+      summary: Deletes a transaction by ID
+      operationId: deleteTransactionById
+      description: Deletes a transaction by ID from the Budget Knight database
+      parameters:
+        - in: path
+          name: id
+          type: string
+          description: ID of the transaction to delete
+          required: true
+      responses:
+        200:
+          description: OK
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Transaction not found 
+  
+  /createfinance:
+    post:
+      tags:
+      - Finance
+      summary: creates a finance
+      operationId: createfinance
+      description: creates a finance in Budget Knight
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: createfinanceitem
+        description: finance
+        schema:
+          $ref: '#/definitions/createfinance'
+      responses:
+        200:
+          description: Finance has been added
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error 
+          
+  /updatefinance:
+    put:
+      tags:
+      - Finance
+      summary: updates finance data
+      operationId: update finance
+      description: updates an existing finance data
+      parameters:
+      - in: body
+        name: finance
+        description: the finance details to update
+        schema:
+          $ref: '#/definitions/updatefinance'
+      responses:
+        200:
+          description: Finance has been updated sucessfully
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error 
+          
+  /creategoal:
+    post:
+      tags:
+      - Goal
+      summary: creates a goal
+      operationId: creategoal
+      description: creates a goal in Budget Knight
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: creategoalitem
+        description: goal
+        schema:
+          $ref: '#/definitions/creategoal'
+      responses:
+        200:
+          description: Goal has been added 
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+          
+  /updategoal:
+    put:
+      tags:
+      - Goal
+      summary: updates goal data
+      operationId: updategoal
+      description: the goal details to update
+      parameters:
+      - in: body
+        name: goal
+        description: goal
+        schema:
+          $ref: '#/definitions/updategoal'
+      responses:
+        200:
+          description: Goal has been updated
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+          
+  /loadgoal:
+    get:
+      tags:
+      - Goal
+      summary: Loads a goal for a user
+      operationId: loadgoal
+      description: Retrieves a goal for a user in Budget Knight
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: email
+        type: string
+        description: the email of the user whose transactions to retrieve
+      responses:
+        200:
+          description: Transactions sucessfully loaded
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error  
+
+definitions:
+  register:
+    type: object
+    required:
+    - firstname
+    - lastname 
+    - email
+    - password
+    properties:
+      firstname:
+        type: string
+        example: "SWagger"
+      lastname:
+        type: string
+        example: "hub test"
+      password:
+        type: string
+        example: "password"
+      email:
+        type: string
+        example: "swaggeremail@gmail.com"
+      
+  login:
+    type: object
+    required:
+    - email
+    - password
+    properties:
+      email:
+        type: string
+        example: "christiansamson58@gmail.com"
+      password:
+        type: string
+        example: "Lampchris79!"
+        
+  addtransaction:
+    type: object
+    required:
+    - email
+    - name
+    - amount
+    - category
+    - date
+    properties:
+      email:
+        type: string
+        example: "nagelwyatt@gmail.com"
+      name:
+        type: string
+        example: "name example"
+      amount:
+        type: integer
+        example: 16
+      category:
+        type: string
+        example: "Rent/Utilities"
+      date:
+        type: string
+        example: "2023-04-15"
+        
+  createfinance:
+    type: object
+    required:
+    - incomeMonthly
+    - savingsMonthly
+    - email
+    properties:
+      incomeMonthly:
+        type: integer
+        example: 1500
+      savingsMonthly:
+        type: integer
+        example: 600
+      email:
+        type: string
+        example: "swaggerhub@gmail.com"
+        
+  updatefinance:
+    type: object
+    required:
+    - _id
+    - incomeMonthly
+    - savingsMonthly
+    properties:
+      _id:
+        type: string
+        example: "642cb0ab8c0b7849a28328b0"
+      incomeMonthly:
+        type: integer
+        example: 1500
+      savingsMonthly:
+        type: integer
+        example: 600
+  
+  creategoal:
+    type: object
+    required:
+    - savingsdesired
+    - currentAmount
+    - email
+    - nameOfGoal
+    properties:
+      savingsdesired:
+        type: integer
+        example: 30000
+      currentAmount:
+        type: integer
+        example: 5000
+      email:
+        type: string
+        example: "swaggerhub@gmail.com"
+      nameOfGoal:
+        type: string
+        example: "Car"
+        
+        
+  updategoal:
+    type: object
+    required:
+    - _id
+    - savingsdesired
+    - currentAmount
+    - nameOfGoal
+    properties:
+      _id:
+        type: string
+        example: "64384873de6c4c47e1992ada"
+      savingsdesired:
+        type: integer
+        example: 10000
+      currentAmount:
+        type: integer
+        example: 900
+      nameOfGoal:
+        type: string
+        example: "motorcyle" 
+         
+# host: budgetknight.herokuapp.com
+# basePath: /api
+schemes:
+ - https
+ - http
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /CHRISTIANSAMSON58_1/Budget-Knight/1.0.0
